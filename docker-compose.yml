@@ -12,12 +12,16 @@ services:
             - ./logs/nginx:/var/log/nginx
         links:
             - php
+        networks:
+            - app-network
     php:
         build: ./images/php
         links:
             - mysql
         volumes:
             - ./www:/var/www
+        networks:
+            - app-network
     mysql:
         image: mariadb
         ports:
@@ -31,4 +35,9 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: mysite
-    
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge

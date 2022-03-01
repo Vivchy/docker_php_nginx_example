@@ -3,7 +3,7 @@ $name = $_REQUEST["name"];
 $email = $_REQUEST["email"];
 
 try {
-    $dbh = new PDO('mysql:host=172.27.0.2;dbname=mysite', 'root', 'password');
+    $dbh = new PDO('mysql:host=mysql;dbname=mysite', 'root', 'password');
     print "подключение успешно";
     
 } catch (PDOException $e) {
